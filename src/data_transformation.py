@@ -27,8 +27,7 @@ def expand_orders_data(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 def join_components_to_orderlines(df_components: pd.DataFrame, 
-                                  df_orderlines: pd.DataFrame
-) -> pd.DataFrame:
+                                  df_orderlines: pd.DataFrame) -> pd.DataFrame:
     'A function to join the components information to the orderlines data'
 
     df = df_orderlines.merge(
@@ -38,13 +37,14 @@ def join_components_to_orderlines(df_components: pd.DataFrame,
 
     return df
 
-def create_orderlines_df(df_components: pd.DataFrame, df_orders: pd.DataFrame): 
+def create_orderlines_df(df_components: pd.DataFrame, 
+                         df_orders: pd.DataFrame) -> None: 
     '''A function to create an orderlines dataframe, enriched with component
     data from the components dataframe and orders dataframe'''
 
     df = expand_orders_data(df_orders)
     df = join_components_to_orderlines(df_components, df)
-    df.to_pickle('./src/data/df_orderlines')
+    df.to_pickle('./data/df_orderlines.pkl')
 
 def main():
     'Load the data and transform to create the orderline dataframe'
