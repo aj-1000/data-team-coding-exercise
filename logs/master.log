@@ -1,0 +1,12 @@
+21.09.15 19:55:25: root: INFO   : --- Executing ./src/data_ingestion.py --- 
+
+21.09.15 19:55:26: root: INFO   : --- Finished executing ./src/data_ingestion.py --- 
+
+21.09.15 19:55:26: root: INFO   : --- Executing ./src/data_transformation.py --- 
+
+21.09.15 19:55:27: root: INFO   : --- Finished executing ./src/data_transformation.py --- 
+
+21.09.15 19:55:27: root: INFO   : --- Executing ./src/data_analysis.py --- 
+
+21.09.15 19:55:27: root: INFO   : --- Finished executing ./src/data_analysis.py --- 
+

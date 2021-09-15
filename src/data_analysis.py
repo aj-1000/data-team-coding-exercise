@@ -38,19 +38,19 @@ def output_colour_analysis(df: pd.DataFrame,
     df.pop('costPrice')
     df.to_csv(f'./output/colour_output_{start_date}.txt', sep=':')
 
-def main():
+def main(start_date: str, end_date: str) -> None:
     'Load the orderlines data and analyse'
 
     logger.info("STARTING DATA ANALYSIS")
     
     df = load_orderlines_data()
-    output_colour_analysis(df, '2021-06-03', '2021-06-04')
+    output_colour_analysis(df, start_date, end_date)
     
     logger.info("FINISHED DATA ANALYSIS")
 
 if __name__ == '__main__':
     
     try:
-        main()
+        main('2021-06-03', '2021-06-04')
     except Exception as e:
         logger.exception(e)

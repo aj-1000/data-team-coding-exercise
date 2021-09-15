@@ -46,7 +46,7 @@ def create_orderlines_df(df_components: pd.DataFrame,
     df = join_components_to_orderlines(df_components, df)
     df.to_pickle('./data/df_orderlines.pkl')
 
-def main():
+def main() -> None:
     'Load the data and transform to create the orderline dataframe'
 
     logger.info("STARTING DATA TRANSFORMATION")

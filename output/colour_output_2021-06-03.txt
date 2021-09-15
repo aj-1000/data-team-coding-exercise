@@ -1,0 +1,11 @@
+colour:quantity
+Black:4773
+Blue:5084
+Brown:4316
+Gold:4464
+Green:4948
+Orange:5121
+Purple:4808
+Red:4817
+White:4587
+Yellow:4474
