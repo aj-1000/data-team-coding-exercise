@@ -4,17 +4,17 @@ from fastlogging import LogInit
 
 logger = LogInit(pathName='logs/data_ingestion.log')
 
-def ingest_components_file(file):
+def ingest_components_file(file: str):
     "A function to load, type check and save the components data from a file"
     df = pd.read_csv(file)
-    df.to_pickle('./data/df_components.hdf')
+    df.to_pickle('./data/df_components.pkl')
 
-def ingest_orders_file(file):
+def ingest_orders_file(file: str):
     "A function to load, type check and save the orders data from a file"
     df = pd.read_json(file, lines=True)
-    df.to_pickle('./data/df_orders.hdf')
+    df.to_pickle('./data/df_orders.pkl')
 
-def main(components_file, orders_file):
+def main(components_file: str, orders_file: str):
     "Call the data ingestion functions"
 
     logger.info("STARTING DATA INGESTION")
