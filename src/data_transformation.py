@@ -12,6 +12,10 @@ def load_ingested_orders_data() -> pd.DataFrame:
     df = pd.read_pickle('./data/df_orders.pkl')
     return df
 
+def save_orderlines_data(df: pd.DataFrame) -> None:
+    'A function to save the orderlines dataframe as a .pkl in the data folder'
+    df.to_pickle('./data/df_orderlines.pkl')
+
 def expand_orders_data(df: pd.DataFrame) -> pd.DataFrame:
     '''A function to separate each order item into it's own row and separate the
     units column into 2 columns: component_id and quantity. Essentially this 
@@ -23,6 +27,7 @@ def expand_orders_data(df: pd.DataFrame) -> pd.DataFrame:
     df.loc[:, 'component_id'] = df['units'].apply(lambda x: x[0])
     df.loc[:, 'quantity'] = df['units'].apply(lambda x: x[1])
     df.pop('units')
+    df = df.reset_index(drop=True)
 
     return df
 
@@ -44,7 +49,7 @@ def create_orderlines_df(df_components: pd.DataFrame,
 
     df = expand_orders_data(df_orders)
     df = join_components_to_orderlines(df_components, df)
-    df.to_pickle('./data/df_orderlines.pkl')
+    save_orderlines_data(df)
 
 def main() -> None:
     'Load the data and transform to create the orderline dataframe'

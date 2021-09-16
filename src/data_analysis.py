@@ -9,6 +9,9 @@ def load_orderlines_data() -> pd.DataFrame:
     df = pd.read_pickle('./data/df_orderlines.pkl')
     return df
 
+def save_colour_analysis(df: pd.DataFrame, date: str) -> None:
+    df.to_csv(f'./output/colour_output_{date}.txt', sep=':')
+
 def filter_data_by_date(df: pd.DataFrame, 
                         start_date: pd.Timestamp, 
                         end_date: pd.Timestamp) -> pd.DataFrame:
@@ -17,6 +20,8 @@ def filter_data_by_date(df: pd.DataFrame,
 
     df = df.loc[(df['timestamp'] >= start_date) 
                 & (df['timestamp'] < end_date)]
+
+    df = df.reset_index(drop=True)
 
     return df
 
@@ -36,7 +41,7 @@ def output_colour_analysis(df: pd.DataFrame,
                              pd.to_datetime(end_date, utc=True))
     df = sum_components_by_colour(df)
     df.pop('costPrice')
-    df.to_csv(f'./output/colour_output_{start_date}.txt', sep=':')
+    save_colour_analysis(df, start_date)
 
 def main(start_date: str, end_date: str) -> None:
     'Load the orderlines data and analyse'
